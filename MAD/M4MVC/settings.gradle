@@ -1,0 +1,2 @@
+include ':app', ':M6_SE', ':madview'
+rootProject.name='M4 MVC'
