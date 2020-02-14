@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 //Move to next page
                 text = "Intro";
-                website = "file:///android_asset/myworldbox.github.io/index.html";
+                website = "https://myworldbox.github.io";
                 music = "music1";
 
                 break;
