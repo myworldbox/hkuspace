@@ -4,15 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
-    MediaPlayer mediaPlayer;
 
     @SuppressLint("SetJavaScriptEnabled")
     @Override
@@ -31,40 +28,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button3.setOnClickListener(this);
         button4.setOnClickListener(this);
         button5.setOnClickListener(this);
-
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        setContentView(R.layout.activity_main);
-
-        //Hide the navigation bar
-        this.getWindow().getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
-
-        //Play music
-        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.music1);
-        mediaPlayer.start();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        mediaPlayer.stop();
-        mediaPlayer.release();
-
     }
 
     @Override
     public void onClick(View view) {
 
         String text = "";
+        String website = "";
+        String music = "";
+        Intent mySuperIntent = new Intent(this, WebsiteActivity.class);
 
         switch (view.getId()) {
 
@@ -72,26 +44,47 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 //Move to next page
                 text = "Intro";
-                Intent mySuperIntent = new Intent(MainActivity.this, Website1Activity.class);
-                startActivity(mySuperIntent);
+                website = "file:///android_asset/myworldbox.github.io/index.html";
+                music = "music1";
 
                 break;
+
             case R.id.button2:
+
                 text = "Game1";
-                break;
-            case R.id.button3:
-                text = "Game2";
-                break;
-            case R.id.button4:
-                text = "Game3";
-                break;
-            case R.id.button5:
-                text = "Setting";
+                website = "file:///android_asset/test/controller.html";
+                music = "music2";
+
                 break;
 
+            case R.id.button3:
+
+                text = "Game2";
+                website = "file:///android_asset/test/pong.html";
+                music = "music3";
+
+                break;
+
+            case R.id.button4:
+
+                text = "Game3";
+                website = "file:///android_asset/test/snack.html";
+                music = "music4";
+
+                break;
+
+            case R.id.button5:
+
+                text = "Setting";
+                website = "file:///android_asset/myworldbox.github.io/index.html";
+                music = "music5";
+
+                break;
         }
 
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
-
+        mySuperIntent.putExtra("key1",website);
+        mySuperIntent.putExtra("key2",music);
+        startActivity(mySuperIntent);
     }
 }
