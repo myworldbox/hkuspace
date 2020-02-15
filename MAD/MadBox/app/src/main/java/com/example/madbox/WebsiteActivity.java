@@ -15,11 +15,17 @@ public class WebsiteActivity extends AppCompatActivity {
 
     MediaPlayer mediaPlayer;
 
-    @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_website);
+
+    }
+
+    @SuppressLint("SetJavaScriptEnabled")
+    @Override
+    protected void onResume() {
+        super.onResume();
 
         //Hide the navigation bar
         this.getWindow().getDecorView().setSystemUiVisibility(
