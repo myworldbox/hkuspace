@@ -36,6 +36,7 @@ public class WebsiteActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 
+        //Get values from other activity
         Intent intent = getIntent();
         String website = intent.getStringExtra("key1");
         String music = intent.getStringExtra("key2");
@@ -60,6 +61,7 @@ public class WebsiteActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
 
+        //Stop music when activity is paused
         mediaPlayer.stop();
         mediaPlayer.release();
     }

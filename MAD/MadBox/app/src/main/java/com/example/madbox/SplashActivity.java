@@ -11,7 +11,7 @@ import android.view.View;
 public class SplashActivity extends AppCompatActivity {
 
     MediaPlayer mediaPlayer;
-    int splashTime = 5000; //Splash screen time
+    int splashTime = 6000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +49,7 @@ public class SplashActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
 
+        //Stop music when activity is paused
         mediaPlayer.stop();
         mediaPlayer.release();
     }
