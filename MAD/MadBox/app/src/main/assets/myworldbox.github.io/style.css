@@ -1,0 +1,135 @@
+* {
+  color: white;
+  background: none;
+  font-family: 'Orbitron', sans-serif;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  font-size: 0.97em;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+p {
+  white-space: pre;
+}
+
+.banner {
+  min-height: 130vh;
+  display: flex;
+  top: center;
+}
+
+#Home, #image_4 {
+  font-size: 5vh;
+  background: url(images/Backgroundresized.png) center/cover scroll repeat-x;
+  animation: animation_3 60s linear infinite alternate;
+}
+
+#image_2 {
+  background: url(images/ALascii2.gif) center/cover scroll no-repeat;
+}
+
+#image_3 {
+  background: url(images/ALascii2.gif) center/cover scroll no-repeat;
+}
+
+.menu {
+  position: fixed;
+  min-width: 30vw;
+  z-index: 1;
+}
+
+.dropdown {
+  display: none;
+  position: relative;
+}
+
+.menu a,
+.dropdown a,
+.titles {
+  font-family: 'Changa', sans-serif;
+  padding: 0.5vh 0 0.5vh 0;
+}
+
+a {
+  display: block;
+  color: lightblue;
+}
+
+a:hover {
+  color: yellow;
+  transition: transform 1s;
+  transform: scale(0.8);
+}
+
+.contents {
+  background: linear-gradient(90deg, rgba(114,206,217,1) 0%, rgba(30,1,50,1) 50%, rgba(146,255,79,1) 100%);
+  border-style: dotted;
+  border-radius: 100vw;
+}
+
+svg {
+  padding: 1vh 3vw 1vh 3vw;
+  margin: 1.5vh;
+  width: 5vw;
+  background: lightskyblue;
+  border: black;
+  border-style: solid;
+}
+
+.logo {
+  display: flex;
+}
+
+.animation_1 {
+  width: 15vw;
+  position: relative;
+  animation-name: animation_1;
+  animation-iteration-count: infinite;
+  animation-duration: 5s;
+  animation-direction: alternate;
+}
+
+.animation_2 {
+  padding: 1vh;
+  animation-name: animation_2;
+  animation-iteration-count: infinite;
+  animation-duration: 10s;
+  animation-direction: alternate;
+}
+
+@keyframes animation_1 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes animation_2 {
+  0% {
+    background: rgb(255,255,255);
+  }
+  100% {
+    background: rgb(0,0,0);
+  }
+}
+
+@keyframes animation_3 {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+  background-position: 100% 0;
+  }
+}
+
+.titles {
+  background: linear-gradient(90deg, rgba(114,206,217,1) 0%, rgba(30,1,50,1) 50%, rgba(146,255,79,1) 100%);
+} 
