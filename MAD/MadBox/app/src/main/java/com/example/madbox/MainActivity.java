@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+//this class handles all activities related to menu
 public class MainActivity extends BaseActivity {
 
     Button[] button = new Button[5];
@@ -25,6 +26,10 @@ public class MainActivity extends BaseActivity {
             button[i] = findViewById(resourceID);
             button[i].setOnClickListener(this);
         }
+
+        //change button text according to user's preference on music
+        Button button = findViewById(R.id.button4);
+        button.setText(musicOn);
     }
 
     @Override
@@ -83,27 +88,27 @@ public class MainActivity extends BaseActivity {
             case R.id.button4:
 
                 //adjust music setting
-                if (musicOn) {
+                if (musicOn.equals("Music: on")) {
 
-                    text = "Off";
-                    musicOn = false;
+                    musicOn = "Music: off";
                     MusicOff();
 
                 } else {
 
-                    text = "On";
-                    musicOn = true;
+                    musicOn = "Music: on";
                     MusicOn();
                 }
 
+                text = musicOn;
+
                 //change button text depending on button clicked
                 Button button = findViewById(R.id.button4);
-                button.setText(text);
+                button.setText(musicOn);
 
                 //save music setup to system
                 SharedPreferences settings = this.getSharedPreferences(PREFS_NAME, 0);
                 SharedPreferences.Editor editor = settings.edit();
-                editor.putBoolean("key3", musicOn);
+                editor.putString("key3", musicOn);
                 editor.apply();
 
                 break;

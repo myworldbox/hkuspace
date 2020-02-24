@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+//this class handles all webView events
 public class WebsiteActivity extends BaseActivity {
 
     @SuppressLint("SetJavaScriptEnabled")

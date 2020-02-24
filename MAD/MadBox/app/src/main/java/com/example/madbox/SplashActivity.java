@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+//this class contains the logic of splash screen
 public class SplashActivity extends BaseActivity {
 
     int splashTime = 6000;

@@ -8,21 +8,19 @@ import android.media.MediaPlayer;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 
-//This class holds all reusable function
+//this class holds all reusable function
 @SuppressLint("Registered")
 public class BaseActivity extends AppCompatActivity implements View.OnClickListener {
 
     //declare variables that used in more than two classes
     MediaPlayer mediaPlayer;
+    String PREFS_NAME = "";
     String text = "";
     String website = "";
     String music = "";
-    Boolean musicOn = true;
-
-    public static final String PREFS_NAME = "0";
+    String musicOn = "Music: on";
 
     @Override
     public void onClick(View v) {
@@ -38,7 +36,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
         //restore preferences
         SharedPreferences settings = this.getSharedPreferences(PREFS_NAME, 0);
-        musicOn = settings.getBoolean("key3", true);
+        musicOn = settings.getString("key3", "Music: on");
     }
 
     protected void HideNav() {
@@ -62,7 +60,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
     protected void MusicOn() {
 
-        if (musicOn) {
+        if (musicOn.equals("Music: on")) {
 
             Resources resources = getResources();
             int sound = resources.getIdentifier(music, "raw", getPackageName());

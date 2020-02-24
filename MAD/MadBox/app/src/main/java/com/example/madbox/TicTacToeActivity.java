@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+//this class contains game logic of Tic Tac Toe
 public class TicTacToeActivity extends BaseActivity {
 
     Button[][] buttons = new Button[3][3];
