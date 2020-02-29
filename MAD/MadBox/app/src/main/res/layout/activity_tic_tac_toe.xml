@@ -29,21 +29,24 @@
                 android:layout_width="100sp"
                 android:layout_height="100sp"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:textSize="60sp" />
 
             <Button
                 android:id="@+id/button10"
                 android:layout_width="100sp"
                 android:layout_height="100sp"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:textSize="60sp" />
 
             <Button
                 android:id="@+id/button20"
                 android:layout_width="100sp"
                 android:layout_height="100sp"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:textSize="60sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -58,21 +61,24 @@
                 android:layout_width="100sp"
                 android:layout_height="100sp"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:textSize="60sp" />
 
             <Button
                 android:id="@+id/button11"
                 android:layout_width="100sp"
                 android:layout_height="100sp"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:textSize="60sp" />
 
             <Button
                 android:id="@+id/button21"
                 android:layout_width="100sp"
                 android:layout_height="100sp"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:textSize="60sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -85,21 +91,24 @@
                 android:layout_width="100sp"
                 android:layout_height="100sp"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:textSize="60sp" />
 
             <Button
                 android:id="@+id/button12"
                 android:layout_width="100sp"
                 android:layout_height="100sp"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:textSize="60sp" />
 
             <Button
                 android:id="@+id/button22"
                 android:layout_width="100sp"
                 android:layout_height="100sp"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:textSize="60sp"/>
         </LinearLayout>
 
     </LinearLayout>
@@ -108,28 +117,23 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
         android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout7"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonReset"
         android:layout_width="70sp"
         android:layout_height="70sp"
+        android:background="@drawable/game_background"
         android:text="Reset"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout7"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -114,12 +114,11 @@ public class MainActivity extends BaseActivity {
                 break;
         }
 
+        RandMusic();
         Toast();
 
         //start webView related activity depending on button clicked
         if (v.getId() != R.id.button3 && v.getId() != R.id.button4) {
-
-            RandMusic();
 
             //pass values to other activity
             Intent intent = new Intent(this, WebsiteActivity.class);

@@ -9,22 +9,20 @@ import android.widget.TextView;
 //this class contains game logic of Tic Tac Toe
 public class TicTacToeActivity extends BaseActivity {
 
-    Button[][] buttons = new Button[3][3];
-    String[][] field = new String[3][3];
+    Button[][] button = new Button[3][3];
+    String[][] string = new String[3][3];
+    TextView scoreBoard;
     boolean circleTurn = true;
     int maxRound;
     int circleScore;
     int crossScore;
-    TextView circleTextView;
-    TextView crossTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tic_tac_toe);
 
-        circleTextView = findViewById(R.id.textView);
-        crossTextView = findViewById(R.id.textView2);
+        scoreBoard = findViewById(R.id.textView);
         Button buttonReset = findViewById(R.id.buttonReset);
         buttonReset.setOnClickListener(this);
 
@@ -33,8 +31,8 @@ public class TicTacToeActivity extends BaseActivity {
             for (int j = 0; j < 3; j++) {
                 String buttonID = "button" + i + j;
                 int resourceID = getResources().getIdentifier(buttonID, "id", getPackageName());
-                buttons[i][j] = findViewById(resourceID);
-                buttons[i][j].setOnClickListener(this);
+                button[i][j] = findViewById(resourceID);
+                button[i][j].setOnClickListener(this);
             }
         }
     }
@@ -60,16 +58,13 @@ public class TicTacToeActivity extends BaseActivity {
     @Override
     public void onClick(View v) {
 
-        //reset players' scores
+        //reset players' scores when buttonReset is clicked
         if (v.getId() == R.id.buttonReset) {
 
             text = "Reset";
             circleScore = crossScore = 0 ;
 
-            Toast();
-            circleTextView.setText("Circle: " + circleScore);
-            crossTextView.setText("Cross: " + circleScore);
-            circleScore = crossScore = 0 ;
+            ResetBoard();
         }
 
         if (!((Button) v).getText().toString().equals("")) {
@@ -91,17 +86,21 @@ public class TicTacToeActivity extends BaseActivity {
 
             if (circleTurn) {
 
-                CircleWin();
+                text = "Circle wins";
+                circleScore++;
 
             } else {
 
-                CrossWin();
+                text = "Cross wins";
+                crossScore++;
             }
+
+            ResetBoard();
 
         } else if (maxRound == 9) {
 
             text = "Draw!";
-            Toast();
+
             ResetBoard();
 
         } else {
@@ -119,63 +118,22 @@ public class TicTacToeActivity extends BaseActivity {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
 
-                field[i][j] = buttons[i][j].getText().toString();
+                string[i][j] = button[i][j].getText().toString();
+
+                }
+
+            //check for columns and rows
+            if (string[i][0].equals(string[i][1]) && string[i][0].equals(string[i][2]) && !string[i][0].equals("") || string[0][i].equals(string[1][i]) && string[0][i].equals(string[2][i]) && !string[0][i].equals("")) {
+
+                    return true;
             }
         }
 
-        //check for columns
-        for (int i = 0; i < 3; i++) {
-
-            if (field[i][0].equals(field[i][1]) && field[i][0].equals(field[i][2]) && !field[i][0].equals("")) {
-
-                return true;
-            }
-        }
-
-        //check for rows
-        for (int i = 0; i < 3; i++) {
-
-            if (field[0][i].equals(field[1][i]) && field[0][i].equals(field[2][i]) && !field[0][i].equals("")) {
-
-                return true;
-            }
-        }
-
-        //check position from top left to bottom right
-        if (field[0][0].equals(field[1][1]) && field[0][0].equals(field[2][2]) && !field[0][0].equals("")) {
-
-            return true;
-        }
-
-        //check position from top right to bottom left
-        if (field[0][2].equals(field[1][1]) && field[0][2].equals(field[2][0]) && !field[0][2].equals("")) {
-
-            return true;
-        }
-
-        return false;
+        //check position from top left to bottom right and from top right to bottom left
+        return string[0][0].equals(string[1][1]) && string[0][0].equals(string[2][2]) && !string[0][0].equals("") || string[0][2].equals(string[1][1]) && string[0][2].equals(string[2][0]) && !string[0][2].equals("");
     }
 
     @SuppressLint("SetTextI18n")
-    protected void CircleWin() {
-
-        circleScore++;
-        text = "Circle wins";
-        Toast();
-        circleTextView.setText("Circle: " + circleScore);
-        ResetBoard();
-    }
-
-    @SuppressLint("SetTextI18n")
-    protected void CrossWin() {
-
-        crossScore++;
-        text = "Circle wins";
-        Toast();
-        crossTextView.setText("Cross: " + crossScore);
-        ResetBoard();
-    }
-
     protected void ResetBoard() {
 
         maxRound = 0;
@@ -184,8 +142,11 @@ public class TicTacToeActivity extends BaseActivity {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
 
-                buttons[i][j].setText("");
+                button[i][j].setText("");
             }
         }
+
+        Toast();
+        scoreBoard.setText("Circle: " + circleScore + "\nCross: " + crossScore);
     }
 }

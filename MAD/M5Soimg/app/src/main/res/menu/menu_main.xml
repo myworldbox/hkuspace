@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="mad.m5soimg.MainActivity">
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never" />
+
+    <!-- Fix to Portrait ONLY -->
+    <item
+        android:id="@+id/action_portrait"
+        android:icon="@drawable/ic_screen_lock_portrait_black_24dp"
+        android:title="Portrait View Only"
+        app:showAsAction="ifRoom" />
+    <!-- AutoRotate -->
+    <item
+        android:id="@+id/action_autorate"
+        android:icon="@drawable/ic_screen_rotation_black_24dp"
+        android:title="AutoRotate"
+        app:showAsAction="ifRoom" />
+</menu>
