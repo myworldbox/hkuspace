@@ -3,16 +3,17 @@ package com.example.madbox;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 
-import java.util.Random;
-
+//this class contains game logic of Spin The Arrow
 public class SpinTheArrowActivity extends BaseActivity {
 
+    //declare variables that used in more than two classes
+    ImageView imageView;
     ImageView arrow;
-    Random random = new Random();
-    int lastDir;
+    int oldPlace;
     boolean spinning;
 
     @Override
@@ -30,6 +31,8 @@ public class SpinTheArrowActivity extends BaseActivity {
         HideNav();
         RandMusic();
         MusicOn();
+
+        RotateImage();
     }
 
     @Override
@@ -39,34 +42,58 @@ public class SpinTheArrowActivity extends BaseActivity {
         MusicOff();
     }
 
-    public void spinBottle(View v) {
+    public void RotateImage() {
 
+        //animate rotation of background image
+        RotateAnimation rotateAnimation = new RotateAnimation(0f, 360f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        rotateAnimation.setInterpolator(new LinearInterpolator());
+        rotateAnimation.setRepeatCount(Animation.INFINITE);
+        rotateAnimation.setDuration(60000);
+
+        //simple scaling the background image view
+        imageView = findViewById(R.id.imageView);
+        imageView.setScaleX(3);
+        imageView.setScaleY(3);
+
+        //start animating (rotating) the background image view
+        imageView.startAnimation(rotateAnimation);
+    }
+
+    public void SpinArrow(View v) {
+
+        //avoid clicking when arrow is spinning
         if (!spinning) {
 
-            int newDir = random.nextInt(1800);
-            float pivotX = arrow.getWidth() / 2;
-            float pivotY = arrow.getHeight() / 2;
+            random = (int)(Math.random() * 7000 + 1000);
+            int pivotX = arrow.getWidth() / 2;
+            int pivotY = arrow.getHeight() / 2;
 
-            Animation rotate = new RotateAnimation(lastDir, newDir, pivotX, pivotY);
-            rotate.setDuration(7000);
+            Animation rotate = new RotateAnimation(oldPlace, random, pivotX, pivotY);
+            rotate.setDuration(random);
             rotate.setFillAfter(true);
             rotate.setAnimationListener(new Animation.AnimationListener() {
 
                 @Override
                 public void onAnimationStart(Animation animation) {
+
                     spinning = true;
                 }
 
                 @Override
                 public void onAnimationEnd(Animation animation) {
+
                     spinning = false;
+
+                    MusicOff();
+                    RandMusic();
+                    MusicOn();
                 }
 
                 @Override
                 public void onAnimationRepeat(Animation animation) { }
             });
 
-            lastDir = newDir;
+            oldPlace = random;
             arrow.startAnimation(rotate);
         }
     }

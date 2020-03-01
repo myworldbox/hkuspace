@@ -24,6 +24,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     String website = "";
     String music = "";
     String musicOn = "Music: on";
+    int random;
     Intent intent;
 
     @Override
@@ -58,7 +59,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     protected void RandMusic() {
 
         //choose music to play randomly
-        int random = (int)(Math.random() * 8 + 1);
+        random = (int)(Math.random() * 8 + 1);
         music = "music"+ random;
     }
 

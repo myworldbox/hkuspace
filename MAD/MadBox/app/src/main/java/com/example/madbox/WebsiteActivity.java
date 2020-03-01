@@ -8,6 +8,8 @@ import android.webkit.WebViewClient;
 //this class handles all webView events
 public class WebsiteActivity extends BaseActivity {
 
+    WebView webView;
+
     @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +19,6 @@ public class WebsiteActivity extends BaseActivity {
         GetKey();
 
         //open website depending on button clicked
-        WebView webView;
         webView = findViewById(R.id.webViewId);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());
