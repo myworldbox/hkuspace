@@ -70,8 +70,11 @@ public class MainActivity extends BaseActivity {
 
             case R.id.button2:
 
-                text = "Snake";
-                website = "https://myworldbox.github.io/snake";
+                text = "Spin The Arrow";
+
+                //move to non webView activity
+                intent = new Intent(this, SpinTheArrowActivity.class);
+                startActivity(intent);
 
                 break;
 
@@ -80,7 +83,7 @@ public class MainActivity extends BaseActivity {
                 text = "Tic Tac Toe";
 
                 //move to non webView activity
-                Intent intent = new Intent(this, TicTacToeActivity.class);
+                intent = new Intent(this, TicTacToeActivity.class);
                 startActivity(intent);
 
                 break;
@@ -118,10 +121,10 @@ public class MainActivity extends BaseActivity {
         Toast();
 
         //start webView related activity depending on button clicked
-        if (v.getId() != R.id.button3 && v.getId() != R.id.button4) {
+        if (v.getId() != R.id.button2 && v.getId() != R.id.button3 && v.getId() != R.id.button4) {
 
             //pass values to other activity
-            Intent intent = new Intent(this, WebsiteActivity.class);
+            intent = new Intent(this, WebsiteActivity.class);
             intent.putExtra("key1", website);
             intent.putExtra("key2", music);
             startActivity(intent);

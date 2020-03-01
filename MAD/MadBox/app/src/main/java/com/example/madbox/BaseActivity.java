@@ -24,6 +24,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     String website = "";
     String music = "";
     String musicOn = "Music: on";
+    Intent intent;
 
     @Override
     public void onClick(View v) {

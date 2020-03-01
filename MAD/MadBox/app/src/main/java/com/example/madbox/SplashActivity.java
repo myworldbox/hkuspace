@@ -22,7 +22,7 @@ public class SplashActivity extends BaseActivity {
             public void run() {
 
                 //move to next activity
-                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                intent = new Intent(SplashActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
 
