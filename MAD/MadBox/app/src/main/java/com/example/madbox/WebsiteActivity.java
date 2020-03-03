@@ -17,6 +17,7 @@ public class WebsiteActivity extends BaseActivity {
         setContentView(R.layout.activity_website);
 
         GetKey();
+        RandMusic();
 
         //open website depending on button clicked
         webView = findViewById(R.id.webViewId);
@@ -30,7 +31,6 @@ public class WebsiteActivity extends BaseActivity {
         super.onResume();
 
         HideNav();
-        RandMusic();
         MusicOn();
     }
 

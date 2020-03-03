@@ -59,7 +59,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     protected void RandMusic() {
 
         //choose music to play randomly
-        random = (int)(Math.random() * 8 + 1);
+        random = (int)(Math.random() * 9 + 1);
         music = "music"+ random;
     }
 

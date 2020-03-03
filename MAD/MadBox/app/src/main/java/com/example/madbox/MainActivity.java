@@ -17,6 +17,7 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
 
         GetKey();
+        RandMusic();
 
         //set content of buttons into arrays
         for (int i = 0; i < 5; i++) {
@@ -37,7 +38,6 @@ public class MainActivity extends BaseActivity {
         super.onResume();
 
         HideNav();
-        RandMusic();
         MusicOn();
     }
 
@@ -70,10 +70,10 @@ public class MainActivity extends BaseActivity {
 
             case R.id.button2:
 
-                text = "Spin The Arrow";
+                text = "Lucky Arrow";
 
                 //move to non webView activity
-                intent = new Intent(this, SpinTheArrowActivity.class);
+                intent = new Intent(this, LuckyArrowActivity.class);
                 startActivity(intent);
 
                 break;
@@ -117,7 +117,6 @@ public class MainActivity extends BaseActivity {
                 break;
         }
 
-        RandMusic();
         Toast();
 
         //start webView related activity depending on button clicked

@@ -22,6 +22,8 @@ public class TicTacToeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tic_tac_toe);
 
+        RandMusic();
+
         scoreBoard = findViewById(R.id.textView);
         Button buttonReset = findViewById(R.id.buttonReset);
         buttonReset.setOnClickListener(this);
@@ -43,7 +45,6 @@ public class TicTacToeActivity extends BaseActivity {
         super.onResume();
 
         HideNav();
-        RandMusic();
         MusicOn();
     }
 

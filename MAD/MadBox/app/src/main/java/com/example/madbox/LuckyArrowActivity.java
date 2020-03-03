@@ -7,8 +7,8 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 
-//this class contains game logic of Spin The Arrow
-public class SpinTheArrowActivity extends BaseActivity {
+//this class contains game logic of Lucky Arrow
+public class LuckyArrowActivity extends BaseActivity {
 
     //declare variables that used in more than two classes
     ImageView imageView;
@@ -19,7 +19,9 @@ public class SpinTheArrowActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_spin_the_arrow);
+        setContentView(R.layout.activity_lucky_arrow);
+
+        RandMusic();
 
         arrow = findViewById(R.id.arrow);
     }
@@ -29,9 +31,7 @@ public class SpinTheArrowActivity extends BaseActivity {
         super.onResume();
 
         HideNav();
-        RandMusic();
         MusicOn();
-
         RotateImage();
     }
 
