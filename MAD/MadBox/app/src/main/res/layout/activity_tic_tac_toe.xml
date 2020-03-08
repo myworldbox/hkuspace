@@ -127,7 +127,7 @@
         android:id="@+id/buttonReset"
         android:layout_width="70sp"
         android:layout_height="70sp"
-        android:background="@drawable/game_background"
+        android:background="@drawable/background2"
         android:text="Reset"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"

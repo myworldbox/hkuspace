@@ -7,11 +7,11 @@ void main() {
     int = a,b,c;
  
  
-    printf("\Enter a number of hours:");
+    printf("\nEnter a number of hours:");
     gets(a);
-    printf("\Enter a number of minutes:");
+    printf("\nEnter a number of minutes:");
     gets(b);
-     printf("\Enter a number of secords:");
+     printf("\nEnter a number of secords:");
     gets(c);
     
     secs(a,b,c);

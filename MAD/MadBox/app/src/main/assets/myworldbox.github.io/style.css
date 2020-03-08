@@ -74,10 +74,10 @@ a:hover {
 }
 
 svg {
-  padding: 1vh 3vw 1vh 3vw;
-  margin: 1.5vh;
+  padding: 1vh 1vh 1vh 1vh;
+  margin: 1vh;
   width: 5vw;
-  background: lightskyblue;
+  background: lightyellow;
   border: black;
   border-style: solid;
 }

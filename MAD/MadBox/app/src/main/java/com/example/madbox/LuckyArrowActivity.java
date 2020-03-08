@@ -8,7 +8,7 @@ import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 
 //this class contains game logic of Lucky Arrow
-public class LuckyArrowActivity extends BaseActivity {
+public class LuckyArrowActivity extends MainActivity {
 
     //declare variables that used in more than two classes
     ImageView imageView;
@@ -21,8 +21,6 @@ public class LuckyArrowActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lucky_arrow);
 
-        RandMusic();
-
         arrow = findViewById(R.id.arrow);
     }
 
@@ -30,16 +28,7 @@ public class LuckyArrowActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
 
-        HideNav();
-        MusicOn();
         RotateImage();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-        MusicOff();
     }
 
     public void RotateImage() {
@@ -65,6 +54,8 @@ public class LuckyArrowActivity extends BaseActivity {
         if (!spinning) {
 
             random = (int)(Math.random() * 7000 + 1000);
+
+            //define pivots for spinning
             int pivotX = arrow.getWidth() / 2;
             int pivotY = arrow.getHeight() / 2;
 

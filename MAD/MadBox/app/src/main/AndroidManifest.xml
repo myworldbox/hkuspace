@@ -11,11 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LuckyArrowActivity" />
-        <activity android:name=".TicTacToeActivity" />
-        <activity android:name=".WebsiteActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".SplashActivity">
+        <activity android:name="com.example.madbox.LuckyArrowActivity" />
+        <activity android:name="com.example.madbox.TicTacToeActivity" />
+        <activity android:name="com.example.madbox.WebsiteActivity" />
+        <activity android:name="com.example.madbox.MainActivity" />
+        <activity android:name="com.example.madbox.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

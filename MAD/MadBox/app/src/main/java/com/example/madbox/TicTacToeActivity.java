@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 //this class contains game logic of Tic Tac Toe
-public class TicTacToeActivity extends BaseActivity {
+public class TicTacToeActivity extends MainActivity {
 
     Button[][] button = new Button[3][3];
     String[][] string = new String[3][3];
@@ -22,8 +22,6 @@ public class TicTacToeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tic_tac_toe);
 
-        RandMusic();
-
         scoreBoard = findViewById(R.id.textView);
         Button buttonReset = findViewById(R.id.buttonReset);
         buttonReset.setOnClickListener(this);
@@ -31,28 +29,13 @@ public class TicTacToeActivity extends BaseActivity {
         //set content of buttons into arrays
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
+
                 String buttonID = "button" + i + j;
                 int resourceID = getResources().getIdentifier(buttonID, "id", getPackageName());
                 button[i][j] = findViewById(resourceID);
                 button[i][j].setOnClickListener(this);
             }
         }
-    }
-
-    @SuppressLint("SetJavaScriptEnabled")
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        HideNav();
-        MusicOn();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-        MusicOff();
     }
 
     @SuppressLint("SetTextI18n")
@@ -120,13 +103,12 @@ public class TicTacToeActivity extends BaseActivity {
             for (int j = 0; j < 3; j++) {
 
                 string[i][j] = button[i][j].getText().toString();
-
-                }
+            }
 
             //check for columns and rows
             if (string[i][0].equals(string[i][1]) && string[i][0].equals(string[i][2]) && !string[i][0].equals("") || string[0][i].equals(string[1][i]) && string[0][i].equals(string[2][i]) && !string[0][i].equals("")) {
 
-                    return true;
+                return true;
             }
         }
 
@@ -138,7 +120,7 @@ public class TicTacToeActivity extends BaseActivity {
     protected void ResetBoard() {
 
         maxRound = 0;
-        circleTurn = true;
+        circleTurn = !circleTurn;
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {

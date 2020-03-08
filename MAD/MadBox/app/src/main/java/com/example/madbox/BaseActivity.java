@@ -2,7 +2,6 @@ package com.example.madbox;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.media.MediaPlayer;
 import android.view.Gravity;
@@ -13,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
-//this class holds all reusable function
+//this class holds all reusable functions
 @SuppressLint("Registered")
 public class BaseActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -22,6 +21,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     String PREFS_NAME = "";
     String text = "";
     String website = "";
+    String activity;
     String music = "";
     String musicOn = "Music: on";
     int random;
@@ -30,18 +30,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
-    }
-
-    protected void GetKey() {
-
-        //get values from other activity
-        Intent intent = getIntent();
-        website = intent.getStringExtra("key1");
-        music = intent.getStringExtra("key2");
-
-        //restore preferences
-        SharedPreferences settings = this.getSharedPreferences(PREFS_NAME, 0);
-        musicOn = settings.getString("key3", "Music: on");
     }
 
     protected void HideNav() {
