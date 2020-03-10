@@ -10,6 +10,9 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.SwitchCompat;
+
 //this class handles all activities related to menu
 public class MainActivity extends BaseActivity {
 
@@ -22,10 +25,25 @@ public class MainActivity extends BaseActivity {
 
         //restore preferences
         SharedPreferences settings0 = this.getSharedPreferences(PREFS_NAME, 0);
-        musicOn = settings0.getString("key0", "Music: on");
+        darkMode = settings0.getBoolean("key0", true);
 
         SharedPreferences settings1 = this.getSharedPreferences(PREFS_NAME, 1);
-        website = settings1.getString("key1", "");
+        musicOn = settings1.getBoolean("key1", true);
+
+        SharedPreferences settings2 = this.getSharedPreferences(PREFS_NAME, 2);
+        website = settings2.getString("key2", "");
+
+        //retrieve selected mode
+        if (darkMode) {
+
+            //dark mode
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+
+        } else {
+
+            //light mode
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
 
         RandMusic();
 
@@ -38,43 +56,69 @@ public class MainActivity extends BaseActivity {
             button[i].setOnClickListener(this);
         }
 
-        //change button text according to user's preference on music
-        TextView button = findViewById(R.id.Music);
-        button.setText(musicOn);
-
-        @SuppressLint("CutPasteId") Switch sound = findViewById(R.id.Music);
-        sound.setChecked(true); // set the switch as Checked (ON) initially
-        sound.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        Switch switch0 = findViewById(R.id.Switch0);
+        switch0.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                //adjust music setting
-                if (musicOn.equals("Music: on")) {
+                if (isChecked) {
 
-                    musicOn = "Music: off";
+                    text = "Mode: light";
+
+                    //light mode
+                    getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+                } else {
+
+                    text = "Mode: dark";
+
+                    //dark mode
+                    getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                }
+
+                Toast();
+
+                darkMode = !darkMode;
+
+                //save music preferences
+                SharedPreferences setting0 = getSharedPreferences(PREFS_NAME, 0);
+                SharedPreferences.Editor editor0 = setting0.edit();
+                editor0.putBoolean("key0", darkMode);
+                editor0.apply();
+            }
+        });
+
+        Switch switch1 = findViewById(R.id.Switch1);
+        switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if (isChecked) {
+
+                    text = "Music: off";
+
                     MusicOff();
 
                 } else {
 
-                    musicOn = "Music: on";
+                    text = "Music: on";
+
                     MusicOn();
                 }
 
-                text = musicOn;
+                Toast();
 
-                //change button text depending on button clicked
-                TextView button = findViewById(R.id.Music);
-                button.setText(musicOn);
+                musicOn = !musicOn;
 
-                //save music setup to system
-                SharedPreferences setting0 = getSharedPreferences(PREFS_NAME, 0);
-                SharedPreferences.Editor editor0 = setting0.edit();
-                editor0.putString("key0", musicOn);
-                editor0.apply();
+                //save music preferences
+                SharedPreferences setting1 = getSharedPreferences(PREFS_NAME, 1);
+                SharedPreferences.Editor editor1 = setting1.edit();
+                editor1.putBoolean("key1", musicOn);
+                editor1.apply();
             }
-        }
-        );
+        });
     }
 
     @Override
@@ -140,10 +184,10 @@ public class MainActivity extends BaseActivity {
         if (v.getId() == R.id.button0 || v.getId() == R.id.button1 || v.getId() == R.id.button2) {
 
             //save music setup to system
-            SharedPreferences setting1 = getSharedPreferences(PREFS_NAME, 1);
-            SharedPreferences.Editor editor1 = setting1.edit();
-            editor1.putString("key1", website);
-            editor1.apply();
+            SharedPreferences setting2 = getSharedPreferences(PREFS_NAME, 2);
+            SharedPreferences.Editor editor2 = setting2.edit();
+            editor2.putString("key2", website);
+            editor2.apply();
         }
 
         Toast();

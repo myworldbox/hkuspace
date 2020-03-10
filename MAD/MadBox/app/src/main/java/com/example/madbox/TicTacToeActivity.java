@@ -46,7 +46,7 @@ public class TicTacToeActivity extends MainActivity {
         if (v.getId() == R.id.buttonReset) {
 
             text = "Reset";
-            circleScore = crossScore = 0 ;
+            circleScore = crossScore = 0;
 
             ResetBoard();
         }

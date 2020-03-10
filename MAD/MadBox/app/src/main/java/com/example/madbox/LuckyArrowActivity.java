@@ -53,7 +53,7 @@ public class LuckyArrowActivity extends MainActivity {
         //avoid clicking when arrow is spinning
         if (!spinning) {
 
-            random = (int)(Math.random() * 7000 + 1000);
+            random = (int) (Math.random() * 7000 + 1000);
 
             //define pivots for spinning
             int pivotX = arrow.getWidth() / 2;
@@ -81,7 +81,8 @@ public class LuckyArrowActivity extends MainActivity {
                 }
 
                 @Override
-                public void onAnimationRepeat(Animation animation) { }
+                public void onAnimationRepeat(Animation animation) {
+                }
             });
 
             oldPlace = random;

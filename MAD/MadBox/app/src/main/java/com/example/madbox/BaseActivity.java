@@ -10,7 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 //this class holds all reusable functions
 @SuppressLint("Registered")
@@ -18,12 +20,13 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
     //declare variables that used in more than two classes
     MediaPlayer mediaPlayer;
+    Boolean darkMode = true;
+    Boolean musicOn = true;
+    String website = "";
     String PREFS_NAME = "";
     String text = "";
-    String website = "";
     String activity;
     String music = "";
-    String musicOn = "Music: on";
     int random;
     Intent intent;
 
@@ -47,13 +50,11 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     protected void RandMusic() {
 
         //choose music to play randomly
-        random = (int)(Math.random() * 9 + 1);
-        music = "music"+ random;
+        random = (int) (Math.random() * 9 + 1);
+        music = "music" + random;
     }
 
     protected void MusicOn() {
-
-        if (musicOn.equals("Music: on")) {
 
             Resources resources = getResources();
             int sound = resources.getIdentifier(music, "raw", getPackageName());
@@ -62,14 +63,16 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             mediaPlayer = MediaPlayer.create(getApplicationContext(), sound);
             mediaPlayer.setLooping(true);
             mediaPlayer.start();
-        }
     }
 
     protected void MusicOff() {
 
-        //stop music when activity is paused
-        mediaPlayer.stop();
-        mediaPlayer.release();
+        if (mediaPlayer != null) {
+
+            //stop music when activity is paused
+            mediaPlayer.stop();
+            mediaPlayer.release();
+        }
     }
 
     protected void Toast() {
