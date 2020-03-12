@@ -87,11 +87,10 @@ public class TicTacToeActivity extends MainActivity {
 
             ResetBoard();
 
-        } else {
-
-            //swap turn for players
-            circleTurn = !circleTurn;
         }
+
+        //swap turn for players
+        circleTurn = !circleTurn;
 
         maxRound++;
     }

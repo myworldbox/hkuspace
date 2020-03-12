@@ -19,6 +19,17 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        //restore preferences
+        SharedPreferences settings0 = this.getSharedPreferences(PREFS_NAME, 0);
+        darkMode = settings0.getBoolean("key0", true);
+
+        SharedPreferences settings1 = this.getSharedPreferences(PREFS_NAME, 1);
+        musicOn = settings1.getBoolean("key1", true);
+
+        SharedPreferences settings2 = this.getSharedPreferences(PREFS_NAME, 2);
+        website = settings2.getString("key2", "");
+
         RandMusic();
 
         //set content of buttons into arrays
@@ -109,16 +120,6 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
-        //restore preferences
-        SharedPreferences settings0 = this.getSharedPreferences(PREFS_NAME, 0);
-        darkMode = settings0.getBoolean("key0", true);
-
-        SharedPreferences settings1 = this.getSharedPreferences(PREFS_NAME, 1);
-        musicOn = settings1.getBoolean("key1", true);
-
-        SharedPreferences settings2 = this.getSharedPreferences(PREFS_NAME, 2);
-        website = settings2.getString("key2", "");
 
         HideNav();
         Mode();

@@ -29,11 +29,4 @@ public class SplashActivity extends MainActivity {
             }
         }, splashTime);
     }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        MusicOff();
-    }
 }
