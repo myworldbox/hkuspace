@@ -48,7 +48,7 @@ public class LuckyArrowActivity extends MainActivity {
         imageView.startAnimation(rotateAnimation);
     }
 
-    public void SpinArrow(View v) {
+    protected void SpinArrow(View v) {
 
         //avoid clicking when arrow is spinning
         if (!spinning) {

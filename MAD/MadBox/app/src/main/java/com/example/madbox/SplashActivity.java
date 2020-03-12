@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 //this class contains the logic of splash screen
-public class SplashActivity extends BaseActivity {
+public class SplashActivity extends MainActivity {
 
     int splashTime = 6000;
 
@@ -28,5 +28,12 @@ public class SplashActivity extends BaseActivity {
 
             }
         }, splashTime);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        MusicOff();
     }
 }

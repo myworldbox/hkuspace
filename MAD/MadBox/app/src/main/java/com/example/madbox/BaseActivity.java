@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
@@ -47,6 +46,22 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
     }
 
+    protected void Mode() {
+
+        //retrieve selected mode
+        if (darkMode) {
+
+            //dark mode
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+
+        } else {
+
+            //light mode
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+
+    }
+
     protected void RandMusic() {
 
         //choose music to play randomly
@@ -56,13 +71,13 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
     protected void MusicOn() {
 
-            Resources resources = getResources();
-            int sound = resources.getIdentifier(music, "raw", getPackageName());
+        Resources resources = getResources();
+        int sound = resources.getIdentifier(music, "raw", getPackageName());
 
-            //play music in loop
-            mediaPlayer = MediaPlayer.create(getApplicationContext(), sound);
-            mediaPlayer.setLooping(true);
-            mediaPlayer.start();
+        //play music in loop
+        mediaPlayer = MediaPlayer.create(getApplicationContext(), sound);
+        mediaPlayer.setLooping(true);
+        mediaPlayer.start();
     }
 
     protected void MusicOff() {
