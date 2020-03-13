@@ -1,0 +1,13 @@
+<!-- Animation frames for Front moving: s11.png ~ s14.png
+    files inside the res/drawable/ folder -->
+
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/bganim"
+    android:oneshot="false" >
+
+    <item android:drawable="@drawable/b11" android:duration="200" />
+    <item android:drawable="@drawable/b12" android:duration="200" />
+    <item android:drawable="@drawable/b13" android:duration="200" />
+    <item android:drawable="@drawable/b14" android:duration="200" />
+	<item android:drawable="@drawable/b15" android:duration="200" />
+</animation-list>
