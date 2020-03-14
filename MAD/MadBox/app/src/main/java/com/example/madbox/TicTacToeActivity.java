@@ -66,6 +66,8 @@ public class TicTacToeActivity extends MainActivity {
             ((Button) v).setText("X");
         }
 
+        maxRound++;
+
         if (CheckWinner()) {
 
             if (circleTurn) {
@@ -106,6 +108,15 @@ public class TicTacToeActivity extends MainActivity {
             }
 
             //check for columns and rows
+            if (string[i][0].equals(string[i][1]) && string[i][0].equals(string[i][2]) && !string[i][0].equals("") || string[0][i].equals(string[1][i]) && string[0][i].equals(string[2][i]) && !string[0][i].equals("")) {
+
+                return true;
+            }
+        }
+
+        //check for columns and rows
+        for (int i = 0; i < 3; i++) {
+
             if (string[i][0].equals(string[i][1]) && string[i][0].equals(string[i][2]) && !string[i][0].equals("") || string[0][i].equals(string[1][i]) && string[0][i].equals(string[2][i]) && !string[0][i].equals("")) {
 
                 return true;
