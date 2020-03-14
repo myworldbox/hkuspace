@@ -67,6 +67,12 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         //choose music to play randomly
         random = (int) (Math.random() * 9 + 1);
         music = "music" + random;
+
+        Resources resources = getResources();
+        int sound = resources.getIdentifier(music, "raw", getPackageName());
+
+        //play music in loop
+        mediaPlayer = MediaPlayer.create(getApplicationContext(), sound);
     }
 
     protected void MusicOn() {
@@ -82,12 +88,9 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
     protected void MusicOff() {
 
-        if (mediaPlayer != null) {
-
-            //stop music when activity is paused
-            mediaPlayer.stop();
-            mediaPlayer.release();
-        }
+        //stop music when activity is paused
+        mediaPlayer.stop();
+        mediaPlayer.release();
     }
 
     protected void Toast() {
