@@ -34,7 +34,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    protected void HideNav() {
+    public void HideNav() {
 
         //hide the navigation bar
         this.getWindow().getDecorView().setSystemUiVisibility(
@@ -46,7 +46,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
     }
 
-    protected void Mode() {
+    public void Mode() {
 
         //retrieve selected mode
         if (darkMode) {
@@ -62,7 +62,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    protected void RandMusic() {
+    public void RandMusic() {
 
         //choose music to play randomly
         random = (int) (Math.random() * 9 + 1);
@@ -75,7 +75,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         mediaPlayer = MediaPlayer.create(getApplicationContext(), sound);
     }
 
-    protected void MusicOn() {
+    public void MusicOn() {
 
         Resources resources = getResources();
         int sound = resources.getIdentifier(music, "raw", getPackageName());
@@ -86,14 +86,14 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         mediaPlayer.start();
     }
 
-    protected void MusicOff() {
+    public void MusicOff() {
 
         //stop music when activity is paused
         mediaPlayer.stop();
         mediaPlayer.release();
     }
 
-    protected void Toast() {
+    public void Toast() {
 
         //prompt reminds for up-coming activity
         LayoutInflater inflater = getLayoutInflater();

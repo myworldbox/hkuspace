@@ -15,7 +15,7 @@ public class MainActivity extends BaseActivity {
     Button[] button = new Button[5];
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -100,14 +100,14 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    protected void onRestart() {
+    public void onRestart() {
         super.onRestart();
 
         recreate();
     }
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
 
         //restore preferences
@@ -116,9 +116,6 @@ public class MainActivity extends BaseActivity {
 
         SharedPreferences settings1 = this.getSharedPreferences(PREFS_NAME, 1);
         musicOn = settings1.getBoolean("key1", true);
-
-        SharedPreferences settings2 = this.getSharedPreferences(PREFS_NAME, 2);
-        website = settings2.getString("key2", "");
 
         HideNav();
         Mode();
@@ -130,7 +127,7 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    protected void onPause() {
+    public void onPause() {
         super.onPause();
 
         MusicOff();
@@ -146,44 +143,43 @@ public class MainActivity extends BaseActivity {
 
                 text = "About me";
                 website = "file:///android_asset/myworldbox.github.io/index.html";
-                activity = "com.example.madbox.WebsiteActivity";
 
                 break;
 
             case R.id.button1:
 
                 text = "Guidelines";
-                website = "file:///android_asset/myworldbox.github.io/index.html";
-                activity = "com.example.madbox.WebsiteActivity";
+                activity = "com.example.madbox.GuidelinesActivity";
 
                 break;
 
             case R.id.button2:
-
-                text = "Pong";
-                website = "https://myworldbox.github.io/pong";
-                activity = "com.example.madbox.WebsiteActivity";
-
-                break;
-
-            case R.id.button3:
 
                 text = "Lucky Arrow";
                 activity = "com.example.madbox.LuckyArrowActivity";
 
                 break;
 
+            case R.id.button3:
+
+                text = "Pong";
+                website = "https://myworldbox.github.io/pong";
+
+                break;
+
             case R.id.button4:
 
-                text = "Tic Tac Toe";
-                activity = "com.example.madbox.TicTacToeActivity";
+                text = "Snake";
+                website = "https://myworldbox.github.io/snake";
 
                 break;
         }
 
-        if (v.getId() == R.id.button0 || v.getId() == R.id.button1 || v.getId() == R.id.button2) {
+        if (v.getId() != R.id.button1 && v.getId() != R.id.button2) {
 
-            //save music setup to system
+            activity = "com.example.madbox.WebsiteActivity";
+
+            //save website to system
             SharedPreferences setting2 = getSharedPreferences(PREFS_NAME, 2);
             SharedPreferences.Editor editor2 = setting2.edit();
             editor2.putString("key2", website);

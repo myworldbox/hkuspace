@@ -10,7 +10,7 @@ public class SplashActivity extends MainActivity {
     int splashTime = 6000;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
