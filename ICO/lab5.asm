@@ -71,7 +71,7 @@ swap:
 #--------------------------------
     # print reversed array
         
-    ble $t0, 0, exit2
+    ble $t0, 0, check_min
     lw $t2, 0($t1)
     addi $t1, $t1, -4
 
@@ -95,7 +95,7 @@ swap:
     addi $t0, $t0, -1
     j swap
 
- exit2:
+ check_min:
 #--------------------------------
     
     la $s0, array # p = foo
@@ -106,10 +106,10 @@ swap:
     lw $t4,0($s0) # fetch xyz[0]
     sw $t4,0($s2) # store in min
 
-check_min:
+check_loop:
 #--------------------------------
 
-    beq $s0,$s1, exit3 # if (p == end) goto L2
+    beq $s0,$s1, exit2 # if (p == end) goto L2
 
     lw $t0,0($s0) # $t0 = *p
     addi $s0,$s0,4 # p++
@@ -118,12 +118,12 @@ check_min:
 
     lw $t4,0($s2) # fetch min
     slt $t2,$t4,$t0 # *p < min?
-    bne $t2,$zero,check_min # no, loop
+    bne $t2,$zero,check_loop # no, loop
 
     sw $t0,0($s2) # store new/better min value
-    j check_min
+    j check_loop
 
-exit3:
+exit2:
 #--------------------------------
     # print str3
     
